@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 const Country = ({
-  country: { name, capital, flag, languages, population, currency },
+  country: { name, capital, flag, languages, population, currency }
 }) => {
   const formatedCapital =
     capital.length > 0 ? (
@@ -10,15 +10,15 @@ const Country = ({
       </>
     ) : (
       ''
-    )
-  const formatLanguage = languages.length > 1 ? `Languages` : `Language`
+    );
+  const formatLanguage = languages.length > 1 ? `Languages` : `Language`;
   return (
-    <div className='country'>
-      <div className='country_flag'>
+    <div className="country">
+      <div className="country_flag">
         <img src={flag} alt={name} />
       </div>
-      <h3 className='country_name'>{name.toUpperCase()}</h3>
-      <div class='country_text'>
+      <h3 className="country_name">{name.toUpperCase()}</h3>
+      <div class="country_text">
         <p>{formatedCapital}</p>
         <p>
           <span>{formatLanguage}: </span>
@@ -34,7 +34,7 @@ const Country = ({
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Country
+export default Country;

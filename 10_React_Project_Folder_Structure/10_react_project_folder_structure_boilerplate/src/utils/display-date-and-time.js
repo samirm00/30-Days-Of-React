@@ -11,11 +11,11 @@ export const showDate = (time) => {
     'September',
     'October',
     'November',
-    'December',
-  ]
+    'December'
+  ];
 
-  const month = months[time.getMonth()].slice(0, 3)
-  const year = time.getFullYear()
-  const date = time.getDate()
-  return `${month} ${date}, ${year}`
-}
+  const month = months[time.getMonth()].slice(0, 3);
+  const year = time.getFullYear();
+  const date = time.getDate();
+  return `${month} ${date}, ${year}`;
+};

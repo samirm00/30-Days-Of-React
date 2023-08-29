@@ -9,5 +9,5 @@ export const tenHighestPopulation = [
   { country: 'Nigeria', population: 186988000 },
   { country: 'Bangladesh', population: 161006790 },
   { country: 'Russian Federation', population: 146599183 },
-  { country: 'Japan', population: 126960000 },
-]
+  { country: 'Japan', population: 126960000 }
+];

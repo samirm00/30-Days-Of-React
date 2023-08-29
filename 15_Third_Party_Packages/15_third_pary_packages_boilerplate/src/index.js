@@ -1,80 +1,79 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import ReactDOM from 'react-dom'
-import moment from 'moment'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import axios from 'axios';
+import ReactDOM from 'react-dom';
+import moment from 'moment';
+import styled from 'styled-components';
 import {
   TiSocialLinkedinCircular,
   TiSocialGithubCircular,
-  TiSocialTwitterCircular,
-} from 'react-icons/ti'
+  TiSocialTwitterCircular
+} from 'react-icons/ti';
 
 const Title = styled.h1`
   font-size: 70px;
   font-weight: 300;
-`
+`;
 const SubTitle = styled.h2`
   font-weight: 300;
-`
+`;
 
 const Header = styled.header`
   background-color: #61dbfb;
   padding: 25;
   padding: 10px;
   margin: 0;
-`
+`;
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    console.log('I am  the constructor and  I will be the first to run.')
+    super(props);
+    console.log('I am  the constructor and  I will be the first to run.');
     this.state = {
       firstName: 'John',
       data: [],
       day: 1,
-      congratulate: '',
-    }
+      congratulate: ''
+    };
   }
 
   componentDidMount() {
-    const API_URL = 'https://restcountries.eu/rest/v2/all'
+    const API_URL = 'https://restcountries.eu/rest/v2/all';
     axios
       .get(API_URL)
       .then((response) => {
         this.setState({
-          data: response.data,
-        })
+          data: response.data
+        });
       })
       .catch((error) => {
-        console.log(error)
-      })
-
+        console.log(error);
+      });
   }
   static getDerivedStateFromProps(props, state) {
-    return { firstName: props.firstName }
+    return { firstName: props.firstName };
   }
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps, nextState)
-    console.log(nextState.day)
+    console.log(nextProps, nextState);
+    console.log(nextState.day);
     if (nextState.day > 31) {
-      return false
+      return false;
     } else {
-      return true
+      return true;
     }
   }
 
   doChallenge = () => {
     this.setState({
-      day: this.state.day + 1,
-    })
-  }
+      day: this.state.day + 1
+    });
+  };
   renderCountries = () => {
     return this.state.data.map((country) => {
       const languageOrLanguages =
-        country.languages.length > 1 ? 'Langauges' : 'Language'
+        country.languages.length > 1 ? 'Langauges' : 'Language';
       const formatLanguages = country.languages
         .map(({ name }) => name)
-        .join(', ')
+        .join(', ');
       return (
         <div>
           <div>
@@ -90,21 +89,21 @@ class App extends Component {
             <p>Population: {country.population}</p>
           </div>
         </div>
-      )
-    })
-  }
+      );
+    });
+  };
   componentDidUpdate(prevProps, prevState) {
     if (prevState.day == 30) {
       this.setState({
-        congratulate: 'Congratulations,Challenge has been completed',
-      })
+        congratulate: 'Congratulations,Challenge has been completed'
+      });
     }
-    console.log(prevState, prevProps)
+    console.log(prevState, prevProps);
   }
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <Header>
           <Title>30 Days Of React</Title>
           <h2>Getting Started React</h2>
@@ -126,12 +125,12 @@ class App extends Component {
         {this.state.congratulate && <h2>{this.state.congratulate}</h2>}
         <div>
           <p>There are {this.state.data.length} countries in the api</p>
-          <div className='countries-wrapper'>{this.renderCountries()}</div>
+          <div className="countries-wrapper">{this.renderCountries()}</div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);

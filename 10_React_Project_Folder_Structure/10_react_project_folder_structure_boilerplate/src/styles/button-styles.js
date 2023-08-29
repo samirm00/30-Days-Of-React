@@ -8,5 +8,5 @@ export const buttonStyles = {
   cursor: 'pointer',
   fontSize: 22,
   color: 'white',
-  margin: '0 auto',
-}
+  margin: '0 auto'
+};

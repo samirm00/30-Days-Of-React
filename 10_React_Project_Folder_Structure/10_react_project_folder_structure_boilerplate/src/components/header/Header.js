@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { showDate } from '../../utils/display-date-and-time'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { showDate } from '../../utils/display-date-and-time';
 
 const Header = ({
   data: {
@@ -8,12 +8,12 @@ const Header = ({
     title,
     subtitle,
     author: { firstName, lastName },
-    date,
-  },
+    date
+  }
 }) => {
   return (
     <header>
-      <div className='header-wrapper'>
+      <div className="header-wrapper">
         <h1>{welcome}</h1>
         <h2>{title}</h2>
         <h3>{subtitle}</h3>
@@ -23,7 +23,7 @@ const Header = ({
         <small>{showDate(date)}</small>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

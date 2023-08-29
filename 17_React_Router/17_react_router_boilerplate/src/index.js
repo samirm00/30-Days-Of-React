@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   NavLink,
   Redirect,
-  Prompt,
-} from 'react-router-dom'
+  Prompt
+} from 'react-router-dom';
 
 // Home component
-const Home = (props) => <h1>Welcome Home</h1>
+const Home = (props) => <h1>Welcome Home</h1>;
 // About component
-const About = (props) => <h1>About Us</h1>
+const About = (props) => <h1>About Us</h1>;
 // Contact component
-const Contact = (props) => <h1>Contact us</h1>
+const Contact = (props) => <h1>Contact us</h1>;
 // Challenge component
 
 const challenges = [
@@ -27,12 +27,11 @@ const challenges = [
     level: 'Beginners to Advanced',
     duration: '20 Nov 2019 - 20 Dec 2019',
     slug: 'pyhton',
-    url:
-      'https://github.com/https://https://github.com/Asabeneh/30-Days-Of-Python.com/Asabeneh/30-Days-Of-JavaScript/30-Days-Of-React',
+    url: 'https://github.com/https://https://github.com/Asabeneh/30-Days-Of-Python.com/Asabeneh/30-Days-Of-JavaScript/30-Days-Of-React',
     author: {
       firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
+      lastName: 'Yetayeh'
+    }
   },
   {
     name: '30 Days Of JavaScript',
@@ -46,8 +45,8 @@ const challenges = [
     url: 'https://github.com/Asabeneh/30-Days-Of-JavaScript',
     author: {
       firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
+      lastName: 'Yetayeh'
+    }
   },
   {
     name: '30 Days Of React',
@@ -61,8 +60,8 @@ const challenges = [
     url: 'https://github.com/Asabeneh/30-Days-Of-React',
     author: {
       firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
+      lastName: 'Yetayeh'
+    }
   },
   {
     name: '30 HTML and CSS',
@@ -77,8 +76,8 @@ const challenges = [
     url: '',
     author: {
       firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
+      lastName: 'Yetayeh'
+    }
   },
   {
     name: '30 ReactNative',
@@ -92,8 +91,8 @@ const challenges = [
     url: '',
     author: {
       firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
+      lastName: 'Yetayeh'
+    }
   },
   {
     name: '30 Data Analysis',
@@ -107,8 +106,8 @@ const challenges = [
     url: '',
     author: {
       firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
+      lastName: 'Yetayeh'
+    }
   },
   {
     name: '30 Machine Learning',
@@ -122,10 +121,10 @@ const challenges = [
     url: '',
     author: {
       firstName: 'Asabeneh',
-      lastName: 'Yetayeh',
-    },
-  },
-]
+      lastName: 'Yetayeh'
+    }
+  }
+];
 
 const Challenge = ({
   challenge: {
@@ -135,8 +134,8 @@ const Challenge = ({
     days,
     level,
     duration,
-    author: { firstName, lastName },
-  },
+    author: { firstName, lastName }
+  }
 }) => (
   <div>
     <h1>{name}</h1>
@@ -154,12 +153,12 @@ const Challenge = ({
 
     <p>{description}</p>
   </div>
-)
+);
 
 const Challenges = (props) => {
-  const path = props.location.pathname
-  const slug = path.split('/').slice(path.split('/').length - 1)[0]
-  const challenge = challenges.find((challenge) => challenge.slug === slug)
+  const path = props.location.pathname;
+  const slug = path.split('/').slice(path.split('/').length - 1)[0];
+  const challenge = challenges.find((challenge) => challenge.slug === slug);
 
   return (
     <div>
@@ -183,32 +182,32 @@ const Challenges = (props) => {
         />
       </Switch>
     </div>
-  )
-}
+  );
+};
 
-const NotFound = (props) => <h1>The page your looking for not found</h1>
+const NotFound = (props) => <h1>The page your looking for not found</h1>;
 const Navbar = ({ username }) => (
   <ul>
     <li>
-      <NavLink to='/'>Home</NavLink>
+      <NavLink to="/">Home</NavLink>
     </li>
     <li>
-      <NavLink to='/about'>About</NavLink>
+      <NavLink to="/about">About</NavLink>
     </li>
     <li>
-      <NavLink to='/contact'>Contact</NavLink>
+      <NavLink to="/contact">Contact</NavLink>
     </li>
     <li>
       <NavLink to={`/user/${username}`}>User</NavLink>
     </li>
     <li>
-      <NavLink to='/challenges'>Challenges</NavLink>
+      <NavLink to="/challenges">Challenges</NavLink>
     </li>
   </ul>
-)
+);
 
 const User = ({ match, isLoggedIn, handleLogin }) => {
-  const username = match.params.username
+  const username = match.params.username;
   return (
     <div>
       {isLoggedIn ? (
@@ -221,8 +220,8 @@ const User = ({ match, isLoggedIn, handleLogin }) => {
       )}
       <button onClick={handleLogin}>{isLoggedIn ? 'Logout' : 'Login'}</button>
     </div>
-  )
-}
+  );
+};
 
 const Welcome = ({ handleLogin, isLoggedIn }) => {
   return (
@@ -230,22 +229,22 @@ const Welcome = ({ handleLogin, isLoggedIn }) => {
       {isLoggedIn ? 'Welcome to the challenge' : <p>Please login in </p>}
       <button onClick={handleLogin}>{isLoggedIn ? 'Logout' : 'Login'}</button>
     </div>
-  )
-}
+  );
+};
 class App extends Component {
   state = {
     isLoggedIn: false,
-    firstName: 'Asabeneh',
-  }
+    firstName: 'Asabeneh'
+  };
   handleLogin = () => {
     this.setState({
-      isLoggedIn: !this.state.isLoggedIn,
-    })
-  }
+      isLoggedIn: !this.state.isLoggedIn
+    });
+  };
   render() {
     return (
       <Router>
-        <div className='App'>
+        <div className="App">
           <Navbar username={this.state.firstName} />
 
           <Prompt
@@ -253,15 +252,15 @@ class App extends Component {
               return this.state.isLoggedIn &&
                 pathname.includes('/user/Asabeneh')
                 ? 'Are you sure you want to logout?'
-                : true
+                : true;
             }}
           />
 
           <Switch>
-            <Route path='/about' component={About} />
-            <Route path='/contact' component={Contact} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
             <Route
-              path='/user/:username'
+              path="/user/:username"
               component={(props) => (
                 <User
                   {...props}
@@ -271,7 +270,7 @@ class App extends Component {
               )}
             />
             <Route
-              path='/login'
+              path="/login"
               component={(props) => (
                 <Welcome
                   {...props}
@@ -281,23 +280,23 @@ class App extends Component {
               )}
             />
             <Route
-              path='/challenges'
+              path="/challenges"
               component={(props) => {
                 return this.state.isLoggedIn ? (
                   <Challenges {...props} />
                 ) : (
-                  <Redirect to='/user/asabeneh' />
-                )
+                  <Redirect to="/user/asabeneh" />
+                );
               }}
             />
-            <Route exact path='/' component={Home} />
+            <Route exact path="/" component={Home} />
             <Route component={NotFound} />
           </Switch>
         </div>
       </Router>
-    )
+    );
   }
 }
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
